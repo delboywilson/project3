@@ -8,11 +8,11 @@ app.get('/', (req, res) => {
 })
 
 app.get('/users', (req, res) => {
-  res.send('users')
+  res.json(db.users)
 })
 
 app.get('/schedules', (req, res) => {
-  res.send('schedules')
+  res.json(db.schedules)
 })
 
 app.listen(PORT, () => {
