@@ -4,6 +4,8 @@ const db = require ('./data.js')
 const bodyParser = require('body-parser')
 const app = express()
 const PORT = 3000
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 
 // step 2 
 app.get('/', (req, res) => {
@@ -45,14 +47,15 @@ app.get('/users/:singleUser/schedules', (req, res) => {
 
 // step 4a
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+// app.use(bodyParser.json())
+// app.use(bodyParser.urlencoded({ extended: false }))
 
 app.post('/schedules', (req, res) => {
   let newSchedule = req.body
   console.log(newSchedule)
   db.schedules.push(newSchedule)
   res.send("New schedule added")
+  console.log(db.schedules)
 })
 
 // app.post('/schedules', (req, res) => {
@@ -65,16 +68,15 @@ app.post('/schedules', (req, res) => {
 
 
 
-
 //step 4b
 
 
-app.post('/users', (req, res) => {
-  let newUser = req.body
-  console.log(newUser)
-  db.users.push(newUser)
-  res.send("New user added")
-})
+// app.post('/users', (req, res) => {
+//   let newUser = req.body
+//   console.log(newUser)
+//   db.users.push(newUser)
+//   res.send("New user added")
+// })
 
 
 
