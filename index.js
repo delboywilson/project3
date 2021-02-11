@@ -1,6 +1,7 @@
 // step 1 - set up
 const express = require('express')
 const db = require ('./data.js')
+const bodyParser = require('body-parser')
 const app = express()
 const PORT = 3000
 
@@ -41,6 +42,43 @@ app.get('/users/:singleUser/schedules', (req, res) => {
   return res.send(scheduleId)
 })
 
-app.post('/users', (req, res) => {
 
+// step 4a
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+
+app.post('/schedules', (req, res) => {
+  let newSchedule = req.body
+  console.log(newSchedule)
+  db.schedules.push(newSchedule)
+  res.send("New schedule added")
+})
+
+// app.post('/schedules', (req, res) => {
+//   let newSchedule = req.body
+//   let newObject = {newSchedule}
+//   console.log(newObject)
+//   db.schedules.push(newObject)
+//   res.send("New schedule added")
+// })
+
+
+
+
+//step 4b
+
+
+app.post('/users', (req, res) => {
+  let newUser = req.body
+  console.log(newUser)
+  db.users.push(newUser)
+  res.send("New user added")
+})
+
+
+
+
+app.listen(PORT, () => {
+  console.log(`server is listening on localhost${PORT}`)
 })
