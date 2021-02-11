@@ -47,8 +47,8 @@ app.get('/users/:singleUser/schedules', (req, res) => {
 
 // step 4a
 
-// app.use(bodyParser.json())
-// app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.post('/schedules', (req, res) => {
   let newSchedule = req.body
