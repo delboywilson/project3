@@ -58,16 +58,6 @@ app.post('/schedules', (req, res) => {
   console.log(db.schedules)
 })
 
-// app.post('/schedules', (req, res) => {
-//   let newSchedule = req.body
-//   let newObject = {newSchedule}
-//   console.log(newObject)
-//   db.schedules.push(newObject)
-//   res.send("New schedule added")
-// })
-
-
-
 //step 4b
 
 
