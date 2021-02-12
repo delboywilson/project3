@@ -24,8 +24,7 @@
   height: 600px;
   margin-left: auto;
   margin-right: auto;
+  padding: 20px;
   background-color: lightgray;
 }
-h2 {
-  color: red;
-}
+

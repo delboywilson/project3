@@ -15,16 +15,25 @@ app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-// step 2 
+// step 2 // B step 
 app.get('/', (req, res) => {
-  res.send('Welcome to our schedule website')
+  const welcome = "Welcome to our schedule website"
+  res.render('pages/index', {
+    welcome: welcome
+  })
 })
+
+// res.json(db.users)
+
 app.get('/users', (req, res) => {
-  res.json(db.users)
+  const users = db.users
+  res.render('pages/users', {
+    users: users
+  })
 })
 app.get('/schedules', (req, res) => {
   // const schedules = res.json(db.schedules)
-  res.render('pages/index')
+  res.render('pages/schedules')
 })
 
 // step 3a
@@ -50,8 +59,8 @@ app.get('/users/:singleUser/schedules', (req, res) => {
 })
 
 // step 4a
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+// app.use(bodyParser.json())
+// app.use(bodyParser.urlencoded({ extended: false }))
 
 app.post('/schedules', (req, res) => {
   let newSchedule = {
