@@ -51,7 +51,12 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.post('/schedules', (req, res) => {
-  let newSchedule = req.body
+  let newSchedule = {
+    'user_id': Number(req.body.user_id),
+    'day': Number(req.body.day),
+    'start_at': req.body.start_at,
+    'end_at': req.body.end_at
+  }
   console.log(newSchedule)
   db.schedules.push(newSchedule)
   res.send("New schedule added")
