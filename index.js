@@ -1,4 +1,5 @@
 // step 1 - set up
+
 const express = require('express')
 const morgan = require('morgan')
 const db = require ('./data.js')
@@ -14,6 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 
 // step 2 
+
 app.get('/', (req, res) => {
   res.send('Welcome to our schedule website')
 })
