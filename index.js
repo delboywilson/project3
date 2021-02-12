@@ -3,6 +3,7 @@ const express = require('express')
 const morgan = require('morgan')
 const db = require ('./data.js')
 const bodyParser = require('body-parser')
+const crypto = require('crypto')
 const app = express()
 const PORT = 3000
 
@@ -64,19 +65,26 @@ app.post('/schedules', (req, res) => {
   }
   console.log(newSchedule)
   db.schedules.push(newSchedule)
-  res.send("New schedule added")
   console.log(db.schedules)
+  return res.send("New schedule added")
 })
 
 //step 4b
 
 
-// app.post('/users', (req, res) => {
-//   let newUser = req.body
-//   console.log(newUser)
-//   db.users.push(newUser)
-//   res.send("New user added")
-// })
+app.post('/users', (req, res) => {
+  const hash = crypto.createHash('sha256').update(req.body.password).digest('hex')
+  let newUser = {
+    'firstname': req.body.firstname,
+    'lastname': req.body.lastname,
+    'email': req.body.email,
+    'password': hash
+  }
+  console.log(newUser)
+  db.users.push(newUser)
+  console.log(db.users)
+  return res.send("New user added")
+})
 
 
 
