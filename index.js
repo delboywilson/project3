@@ -1,11 +1,16 @@
 // step 1 - set up
 const express = require('express')
+const morgan = require('morgan')
 const db = require ('./data.js')
 const bodyParser = require('body-parser')
 const app = express()
 const PORT = 3000
+
+app.set('view engine', 'ejs')
+app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+
 
 // step 2 
 app.get('/', (req, res) => {
