@@ -15,7 +15,7 @@ app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-// B step 3
+// B step 3 main routes
 app.get('/', (req, res) => {
   const welcome = "Welcome to our schedule website"
   res.render('pages/index', {
@@ -34,24 +34,26 @@ app.get('/schedules', (req, res) => {
     schedules: schedules
   })
 })
-
-// step 3a
+// B step 3 single user route
 app.get('/users/:singleUser', (req, res) => {
   
   const userId = req.params.singleUser
   const userIdSingle = db.users[userId]
 
-  res.render('pages/singleuser', {
+// shows new page from step 4
+// TODO better solution? + retrun error page if anything else is entered in url
+  if (userId == "new") {
+    res.render('pages/usersnew')
+  } else res.render('pages/singleuser', {
     userIdSingle: userIdSingle
   })
 })
 
-// B step 3
+// B step 3 single uses/schedules route
 app.get('/users/:singleUser/schedules', (req, res) => {
   
   const userId = req.params.singleUser
   const scheduleId = []
-  // const scheduleIdSingle = db.schedules[userId]
 
   for (i=0; i < db.schedules.length; i ++) {
     if (db.schedules[i]['user_id'] == userId)
@@ -63,9 +65,10 @@ app.get('/users/:singleUser/schedules', (req, res) => {
   })
 })
 
-// step 4a
-// app.use(bodyParser.json())
-// app.use(bodyParser.urlencoded({ extended: false }))
+// B step 4 forms for post routes
+// TODO bonus step - limit input fields etc 
+
+app.get('/schedules/new', (req, res) => res.render('pages/schedulenew'))
 
 app.post('/schedules', (req, res) => {
   let newSchedule = {
@@ -74,13 +77,19 @@ app.post('/schedules', (req, res) => {
     'start_at': req.body.start_at,
     'end_at': req.body.end_at
   }
+  const schedules = db.schedules
   console.log(newSchedule)
   db.schedules.push(newSchedule)
   console.log(db.schedules)
-  return res.send("New schedule added")
+  res.render('pages/schedules',{
+    schedules: schedules
+  })
 })
 
-// step 4b
+// B step 4b
+
+app.get('/users/new', (req, res) => res.render('pages/usersnew'))
+
 app.post('/users', (req, res) => {
   const hash = crypto.createHash('sha256').update(req.body.password).digest('hex')
   let newUser = {
@@ -89,13 +98,15 @@ app.post('/users', (req, res) => {
     'email': req.body.email,
     'password': hash
   }
+  const users = db.users
   console.log(newUser)
   db.users.push(newUser)
   console.log(db.users)
-  return res.send("New user added")
+  res.render('pages/users', {
+    users: users
+  })
 })
 
-// end of file
 app.listen(PORT, () => {
   console.log(`server is listening on localhost${PORT}`)
 })
