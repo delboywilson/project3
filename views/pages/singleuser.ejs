@@ -10,7 +10,7 @@
 <body>
   <div class="content-wrapper">
     <div class="top-bar">
-      <h1>Users website</h1>
+      <h1>Users website - single</h1>
     </div>
     <div class="main-content">
       <table class="users">
@@ -20,14 +20,12 @@
           <td>Email:</td>
           <td>Password:</td>
         </tr>
-      <% for(var i=0; i < users.length; i++) { %>
       <tr>
-          <td><%= users[i].firstname %></td>
-          <td><%= users[i].lastname %></td>
-          <td><%= users[i].email %></td>
-          <td><%= users[i].password %></td>
+          <td><%= userIdSingle.firstname %></td>
+          <td><%= userIdSingle.lastname %></td>
+          <td><%= userIdSingle.email %></td>
+          <td><%= userIdSingle.password %></td>
       </tr>
-      <% } %>
       </table>
     </div>
 </body>

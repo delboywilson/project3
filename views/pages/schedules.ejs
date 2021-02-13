@@ -13,7 +13,22 @@
       <h1>Schedule website</h1>
     </div>
     <div class="main-content">
-      <h2>Schedules:</h2>
+      <table class="users">
+        <tr>
+          <td>User ID:</td>
+          <td>Day:</td>
+          <td>Start at:</td>
+          <td>End at:</td>
+        </tr>
+      <% for(var i=0; i < schedules.length; i++) { %>
+      <tr>
+          <td><%= schedules[i].user_id %></td>
+          <td><%= schedules[i].day %></td>
+          <td><%= schedules[i].start_at %></td>
+          <td><%= schedules[i].end_at %></td>
+      </tr>
+      <% } %>
+      </table>
     </div>
 </body>
 </html>

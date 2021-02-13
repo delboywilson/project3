@@ -8,7 +8,7 @@
   width: 100vw;
   height: 100vh;
   align-items: center;
-  text-align: center;
+  /* text-align: center; */
 }
 .top-bar {
   display: flex;
@@ -22,9 +22,22 @@
 .main-content {
   width: 90%;
   height: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  /* margin-left: auto;
+  margin-right: auto; */
+  text-align: center;
+  /* align-items: center;
+  justify-content: center; */
   padding: 20px;
   background-color: lightgray;
 }
-
+.users {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: black;
+}
+td {
+  background-color: white;
+  font-size: larger;
+  padding: 10px;
+}

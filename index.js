@@ -1,4 +1,4 @@
-// step 1 - set up // B step 1 set up template engine
+// B step 1 set up template engine
 const express = require('express')
 const morgan = require('morgan')
 const db = require('./data.js')
@@ -15,16 +15,13 @@ app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-// step 2 // B step 
+// B step 3
 app.get('/', (req, res) => {
   const welcome = "Welcome to our schedule website"
   res.render('pages/index', {
     welcome: welcome
   })
 })
-
-// res.json(db.users)
-
 app.get('/users', (req, res) => {
   const users = db.users
   res.render('pages/users', {
@@ -32,30 +29,38 @@ app.get('/users', (req, res) => {
   })
 })
 app.get('/schedules', (req, res) => {
-  // const schedules = res.json(db.schedules)
-  res.render('pages/schedules')
+  const schedules = db.schedules
+  res.render('pages/schedules',{
+    schedules: schedules
+  })
 })
 
 // step 3a
 app.get('/users/:singleUser', (req, res) => {
   
   const userId = req.params.singleUser
+  const userIdSingle = db.users[userId]
 
-  console.log(req.params)
-  res.json(db.users[userId])
+  res.render('pages/singleuser', {
+    userIdSingle: userIdSingle
+  })
 })
 
-// step 3b
+// B step 3
 app.get('/users/:singleUser/schedules', (req, res) => {
   
   const userId = req.params.singleUser
   const scheduleId = []
+  // const scheduleIdSingle = db.schedules[userId]
 
   for (i=0; i < db.schedules.length; i ++) {
     if (db.schedules[i]['user_id'] == userId)
     scheduleId.push(db.schedules[i])
   }
-  return res.send(scheduleId)
+  console.log(scheduleId)
+  res.render('pages/singleschedule', {
+    scheduleId: scheduleId
+  })
 })
 
 // step 4a
