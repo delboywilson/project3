@@ -3,24 +3,76 @@
   <form method="POST" action="/schedules">
     <ul>
       <li>
-        <label for="user_id">User Id:</label>
-        <input type="number" id="user_id" name="user_id" autocomplete="off" required>
-        <small></small>
+        <label for="user_id">User Id:</label><input type="hidden" name="user-value" value="submit">
+        <table>
+        <tr><td class="dropdown">   
+          <select name="user_id" value=''>Select User</option>
+          <option value='James Bond'>James Bond</option>
+          <option value='Tony Stark'>Tony Stark</option>
+          <option value='Ali G'>Ali G</option>
+          <option value='Donald Duck'>Donald Duck</option>
+          </select>
+        </td></tr>
+        </table>
       </li>
       <li>
         <label for="day">Day:</label>
-        <input type="number" id="day" name="day" autocomplete="off" required>
-        <small></small>
+        <input type="hidden" name="day-value" value="submit">
+          <table>
+          <tr><td class="dropdown">   
+            <select name="day" value=''>Select Day</option>
+            <option value='Monday'>Monday</option>
+            <option value='Tuesday'>Tuesday</option>
+            <option value='Wednesday'>Wednesday</option>
+            <option value='Thursday'>Thursday</option>
+            <option value='Friday'>Friday</option>
+            <option value='Saturday'>Saturday</option>
+            <option value='Sunday'>Sunday</option>
+            </select>
+          </td></tr>
+          </table>
       </li>
       <li>
         <label for="start_at">Start at:</label>
-        <input type="text" id="start_at" name="start_at" autocomplete="off" required>
-        <small></small>
+        <input type="hidden" name="todo" value="submit">
+        <table>
+        <tr><td class="dropdown">   
+          <select name="start_at" value=''>Select Time</option>
+          <option value='8AM'>8AM</option>
+          <option value='9AM'>9AM</option>
+          <option value='10AM'>10AM</option>
+          <option value='11AM'>11AM</option>
+          <option value='12PM'>12PM</option>
+          <option value='1PM'>1PM</option>
+          <option value='2PM'>2PM</option>
+          <option value='3PM'>3PM</option>
+          <option value='4PM'>4PM</option>
+          <option value='5PM'>5PM</option>
+          <option value='6PM'>6PM</option>
+          </select>
+        </td></tr>
+        </table>
       </li>
       <li>
         <label for="end_at">End at:</label>
-        <input type="text" id="end_at" name="end_at" autocomplete="off" required>
-        <small></small>
+        <input type="hidden" name=todo value="submit">
+        <table>
+        <tr><td class="dropdown">   
+          <select name="end_at" value=''>Select Time</option>
+          <option value='10AM'>10AM</option>
+          <option value='11AM'>11AM</option>
+          <option value='12PM'>12PM</option>
+          <option value='1PM'>1PM</option>
+          <option value='2PM'>2PM</option>
+          <option value='3PM'>3PM</option>
+          <option value='4PM'>4PM</option>
+          <option value='5PM'>5PM</option>
+          <option value='6PM'>6PM</option>
+          <option value='7PM'>7PM</option>
+          <option value='8PM'>8PM</option>
+          </select>
+        </td></tr>
+        </table>
       </li>
       <li>
         <button class="button" id="button-open" type="submit">Submit</button>

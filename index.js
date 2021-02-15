@@ -1,4 +1,4 @@
-// B step 1 set up template engine
+// projB step 1 set up template engine
 const express = require('express')
 const morgan = require('morgan')
 const db = require('./data.js')
@@ -17,7 +17,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(expressLayouts)
 
-// B step 3 main routes
+// projB step 3 main routes
 app.get('/', (req, res) => {
   res.render('pages/index')
 })
@@ -36,22 +36,24 @@ app.get('/schedules', (req, res) => {
 app.get('/error', (req, res) => {
   res.render('pages/error')
 })
-// B step 3 single user route
+// projB step 3 single user route
 app.get('/users/:singleUser', (req, res) => {
   
   const userId = req.params.singleUser
   const userIdSingle = db.users[userId]
 
 // shows new page from step 4
-// TODO better solution? + retrun error page if anything else is entered in url
+// TODO better solution?
   if (userId == "new") {
     res.render('pages/usersnew')
-  } else res.render('pages/singleuser', {
+  } else if (userId >= "0" && userId <= "2" ) {
+    res.render('pages/singleuser', {
     userIdSingle: userIdSingle
   })
+  } else (res.render('pages/error'))
 })
 
-// B step 3 single uses/schedules route
+// projB step 3 single uses/schedules route
 app.get('/users/:singleUser/schedules', (req, res) => {
   
   const userId = req.params.singleUser
@@ -67,15 +69,14 @@ app.get('/users/:singleUser/schedules', (req, res) => {
   })
 })
 
-// B step 4 forms for post routes
-// TODO bonus step - limit input fields etc 
+// projB step 4 forms for post routes
 
 app.get('/schedules/new', (req, res) => res.render('pages/schedulenew'))
 
 app.post('/schedules', (req, res) => {
   let newSchedule = {
-    'user_id': Number(req.body.user_id),
-    'day': Number(req.body.day),
+    'user_id': req.body.user_id,
+    'day': req.body.day,
     'start_at': req.body.start_at,
     'end_at': req.body.end_at
   }
@@ -88,7 +89,7 @@ app.post('/schedules', (req, res) => {
   })
 })
 
-// B step 4b
+// projB step 4b
 
 app.get('/users/new', (req, res) => res.render('pages/usersnew'))
 

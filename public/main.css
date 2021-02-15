@@ -36,6 +36,11 @@ td {
   font-size: large;
   padding: 10px;
 }
+.dropdown {
+  background-color: lightgray;
+  padding: 0;
+  width: 160px;
+}
 .form-container {
   display: flex;
   justify-content: center;
@@ -46,4 +51,8 @@ form > ul {
 }
 label {
   display: block;
+  padding: 3px;
+}
+button {
+  margin-top: 15px;
 }
