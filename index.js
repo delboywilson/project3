@@ -6,6 +6,7 @@ const database = require('./database')
 const path = require('path')
 const bodyParser = require('body-parser')
 const crypto = require('crypto')
+const expressLayouts = require('express-ejs-layouts')
 const app = express()
 const PORT = 3000
 
@@ -14,13 +15,11 @@ app.use(morgan('dev'))
 app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(expressLayouts)
 
 // B step 3 main routes
 app.get('/', (req, res) => {
-  const welcome = "Welcome to our schedule website"
-  res.render('pages/index', {
-    welcome: welcome
-  })
+  res.render('pages/index')
 })
 app.get('/users', (req, res) => {
   const users = db.users
@@ -33,6 +32,9 @@ app.get('/schedules', (req, res) => {
   res.render('pages/schedules',{
     schedules: schedules
   })
+})
+app.get('/error', (req, res) => {
+  res.render('pages/error')
 })
 // B step 3 single user route
 app.get('/users/:singleUser', (req, res) => {

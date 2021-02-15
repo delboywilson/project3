@@ -1,48 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Users New website</title>
-  <link rel="stylesheet" href="/static/main.css"/>
-</head>
-<body>
-  <div class="content-wrapper">
-    <div class="top-bar">
-      <h1>New User</h1>
-    </div>
-    <div class="main-content">
-      <h3>Please add new schedule:</h3>
-      <div class="form-container">
-        <form method="POST" action="/users">
-          <ul>
-            <li>
-              <label for="firstname">First Name:</label>
-              <input type="text" id="firstname" name="firstname" autocomplete="off" required>
-              <small></small>
-            </li>
-            <li>
-              <label for="lastname">Last Name:</label>
-              <input type="text" id="lastname" name="lastname" autocomplete="off" required>
-              <small></small>
-            </li>
-            <li>
-              <label for="email">Email address:</label>
-              <input type="email" id="email" name="email" autocomplete="off" required>
-              <small></small>
-            </li>
-            <li>
-              <label for="password">Password:</label>
-              <input type="password" id="pass" name="password" minlength="8" required>
-              <small></small>
-            </li>
-            <li>
-              <button class="button" id="button-open" type="submit">Submit</button>
-            </li>
-          </ul>
-         </form>
-      </div>
-    </div>
-</body>
-</html>
+<h3>Please add new schedule:</h3><div class="form-container">
+<form method="POST" action="/users">
+  <ul>
+    <li>
+      <label for="firstname">First Name:</label>
+      <input type="text" id="firstname" name="firstname" autocomplete="off" required>
+      <small></small>
+    </li>
+    <li>
+      <label for="lastname">Last Name:</label>
+      <input type="text" id="lastname" name="lastname" autocomplete="off" required>
+      <small></small>
+    </li>
+    <li>
+      <label for="email">Email address:</label>
+      <input type="email" id="email" name="email" autocomplete="off" required>
+      <small></small>
+    </li>
+    <li>
+      <label for="password">Password:</label>
+      <input type="password" id="pass" name="password" minlength="8" required>
+      <small></small>
+    </li>
+    <li>
+      <button class="button" id="button-open" type="submit">Submit</button>
+    </li>
+  </ul>
+  </form></div>
