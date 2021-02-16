@@ -1,4 +1,3 @@
-// projB step 1 set up template engine
 const express = require('express')
 const morgan = require('morgan')
 const db = require('./data.js')
@@ -17,10 +16,9 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(expressLayouts)
 
-// projB step 3 main routes
-app.get('/', (req, res) => {
-  res.render('pages/index')
-})
+// app.get('/', (req, res) => {
+//   res.render('pages/index')
+// })
 app.get('/users', (req, res) => {
   const users = db.users
   res.render('pages/users', {
@@ -36,13 +34,10 @@ app.get('/schedules', (req, res) => {
 app.get('/error', (req, res) => {
   res.render('pages/error')
 })
-// projB step 3 single user route
+
 app.get('/users/:singleUser', (req, res) => {
-  
   const userId = req.params.singleUser
   const userIdSingle = db.users[userId]
-
-// shows new page from step 4
 // TODO better solution?
   if (userId == "new") {
     res.render('pages/usersnew')
@@ -53,9 +48,7 @@ app.get('/users/:singleUser', (req, res) => {
   } else (res.render('pages/error'))
 })
 
-// projB step 3 single uses/schedules route
 app.get('/users/:singleUser/schedules', (req, res) => {
-  
   const userId = req.params.singleUser
   const scheduleId = []
 
@@ -68,8 +61,6 @@ app.get('/users/:singleUser/schedules', (req, res) => {
     scheduleId: scheduleId
   })
 })
-
-// projB step 4 forms for post routes
 
 app.get('/schedules/new', (req, res) => res.render('pages/schedulenew'))
 
@@ -89,8 +80,6 @@ app.post('/schedules', (req, res) => {
   })
 })
 
-// projB step 4b
-
 app.get('/users/new', (req, res) => res.render('pages/usersnew'))
 
 app.post('/users', (req, res) => {
@@ -109,6 +98,31 @@ app.post('/users', (req, res) => {
     users: users
   })
 })
+
+// projC step1
+
+app.get('/', (req, res) => {
+  const title = 'Schedule:'
+  database.any('SELECT * from schedule;')
+    .then((schedule) => {
+      console.log(schedule)
+      res.render('pages/index2', {
+        title: title,
+        mySchedule: schedule
+      })
+    })
+    .catch((err) => {
+      console.error(err)
+      res.render('pages/error', {
+        err: err
+      })
+    })
+})
+
+app.get('/new', (req, res) => {
+  res.render('pages/new')
+})
+
 
 app.listen(PORT, () => {
   console.log(`server is listening on localhost${PORT}`)

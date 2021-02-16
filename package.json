@@ -4,6 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "create-database": "createdb mr_coffee",
+    "drop-database": "dropdb mr_coffee",
+    "create-tables": "psql Delboy -h localhost -d mr_coffee -f sql/create_schedule_table.sql",
+    "seed-tables": "psql Delboy -h localhost -d mr_coffee -f sql/seed_schedule_table.sql",
+
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon -e js,ejs,css index.js"
   },

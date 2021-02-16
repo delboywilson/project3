@@ -1,7 +1,7 @@
 const pgp = require('pg-promise')()
 
-const connection = 'postgress://Delboy@localhost:5432/mr_coffee_app'
+const connection = 'postgress://Delboy@localhost:5432/mr_coffee'
 
-const datab = pgp(connection)
+const db = pgp(connection)
 
-module.exports = datab
+module.exports = db
