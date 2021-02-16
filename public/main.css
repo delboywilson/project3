@@ -56,3 +56,14 @@ label {
 button {
   margin-top: 15px;
 }
+.error {
+  padding: 10px;
+}
+.user-schedules {
+  list-style: none;
+  font-size: large;
+  margin-top: 20px;
+}
+.individual-users {
+  padding: 10px;
+}

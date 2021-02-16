@@ -1,6 +1,6 @@
-<h1>This is the <%=title%></h1>
-  <ul>
-    <% for(let i =0; i < mySchedule.length; i++) { %>
-      <li><b>User name: </b><%= mySchedule[i].user_name %> <b>Day: </b><%= mySchedule[i].day %> <b>Start time: </b><%= mySchedule[i].start_time %> <b>End time: </b><%= mySchedule[i].end_time %></li>
-    <%} %>
-  </ul>
+<h1>Here are the user schedules: <%=title%></h1>
+<ul class="user-schedules">
+  <% for(let i =0; i < mySchedule.length; i++) { %>
+    <li class="individual-users"><b>User name: </b><%= mySchedule[i].user_name %> <b>Day: </b><%= mySchedule[i].day %> <b>Start time: </b><%= mySchedule[i].start_time %> <b>End time: </b><%= mySchedule[i].end_time %></li>
+  <%} %>
+</ul>

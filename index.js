@@ -16,6 +16,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(expressLayouts)
 
+// comment out this '/' route so that it works for the new index for project C
 // app.get('/', (req, res) => {
 //   res.render('pages/index')
 // })
@@ -113,7 +114,7 @@ app.get('/', (req, res) => {
     })
     .catch((err) => {
       console.error(err)
-      res.render('pages/error', {
+      res.render('pages/error2', {
         err: err
       })
     })
@@ -122,6 +123,18 @@ app.get('/', (req, res) => {
 app.get('/new', (req, res) => {
   res.render('pages/new')
 })
+
+// app.post('/add', function(req,res){
+//   db.serialize(()=>{
+//     db.run('INSERT INTO emp(id,name) VALUES(?,?)', [req.body.id, req.body.name], function(err) {
+//       if (err) {
+//         return console.log(err.message)
+//       }
+//       console.log("New employee has been added")
+//       res.send("New employee has been added into the database with ID = "+req.body.id+ " and Name = "+req.body.name)
+//     })
+// })
+// })
 
 
 app.listen(PORT, () => {
