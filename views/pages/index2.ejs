@@ -1,4 +1,5 @@
-<h1>Here are the user schedules: <%=title%></h1>
+<h1>Here are the user schedules.</h1>
+<a href="/new">Click here to add a new schedule:</a>
 <ul class="user-schedules">
   <% for(let i =0; i < mySchedule.length; i++) { %>
     <li class="individual-users"><b>User name: </b><%= mySchedule[i].user_name %> <b>Day: </b><%= mySchedule[i].day %> <b>Start time: </b><%= mySchedule[i].start_time %> <b>End time: </b><%= mySchedule[i].end_time %></li>

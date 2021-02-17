@@ -100,7 +100,7 @@ app.post('/users', (req, res) => {
   })
 })
 
-// projC step1
+// projC step1/2
 
 app.get('/', (req, res) => {
   const title = 'Schedule:'
@@ -124,19 +124,31 @@ app.get('/new', (req, res) => {
   res.render('pages/new')
 })
 
-// app.post('/add', function(req,res){
-//   db.serialize(()=>{
-//     db.run('INSERT INTO emp(id,name) VALUES(?,?)', [req.body.id, req.body.name], function(err) {
-//       if (err) {
-//         return console.log(err.message)
-//       }
-//       console.log("New employee has been added")
-//       res.send("New employee has been added into the database with ID = "+req.body.id+ " and Name = "+req.body.name)
-//     })
-// })
-// })
+// projC step2
+
+app.post('/new', (req, res) => {
+
+  let v1 = req.body.user_name
+  let v2 = req.body.day
+  let v3 = req.body.start_time
+  let v4 = req.body.end_time
+  // let newID = database.any('SELECT user_id from schedule')
+
+  database.none('INSERT INTO schedule(user_name, day, start_time, end_time) VALUES ($1, $2, $3, $4);', [v1, v2, v3, v4])
+  .then(() => {
+    // console.log(`new user added with ID: ${newID}`)
+    res.render('pages/new') 
+  })
+  .catch((err) => {
+    console.error(err)
+    res.render('pages/error2', {
+      err: err
+    })
+  })
+})
 
 
 app.listen(PORT, () => {
   console.log(`server is listening on localhost${PORT}`)
 })
+
