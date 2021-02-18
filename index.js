@@ -33,6 +33,7 @@ app.get('/schedules', (req, res) => {
   })
 })
 app.get('/error', (req, res) => {
+  console.error()
   res.render('pages/error')
 })
 
@@ -44,7 +45,8 @@ app.get('/users/:singleUser', (req, res) => {
     res.render('pages/usersnew')
   } else if (userId >= "0" && userId <= "2" ) {
     res.render('pages/singleuser', {
-    userIdSingle: userIdSingle
+      userId: userId,
+      userIdSingle: userIdSingle
   })
   } else (res.render('pages/error'))
 })
@@ -59,6 +61,7 @@ app.get('/users/:singleUser/schedules', (req, res) => {
   }
   console.log(scheduleId)
   res.render('pages/singleschedule', {
+    userId: userId,
     scheduleId: scheduleId
   })
 })
@@ -103,12 +106,10 @@ app.post('/users', (req, res) => {
 // projC step1/2
 
 app.get('/', (req, res) => {
-  const title = 'Schedule:'
   database.any('SELECT * from schedule;')
     .then((schedule) => {
       console.log(schedule)
       res.render('pages/index2', {
-        title: title,
         mySchedule: schedule
       })
     })

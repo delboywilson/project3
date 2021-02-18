@@ -20,7 +20,6 @@ header {
 }
 .main-content {
   width: 90%;
-  /* height: 90%; */
   text-align: center;
   padding: 20px;
   background-color: lightgray;
@@ -60,10 +59,29 @@ button {
   padding: 10px;
 }
 .user-schedules {
+  display: flex;
+  flex-direction: column;
+  width: 58%;
+  margin-left: auto;
+  margin-right: auto;
   list-style: none;
   font-size: large;
   margin-top: 20px;
+  text-align: left;
 }
 .individual-users {
   padding: 10px;
+}
+footer {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  background-color: lightslategray;
+}
+.link-schedules {
+  margin-top: 10px;
 }
