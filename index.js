@@ -48,12 +48,14 @@ app.get('/users/:singleUser', (req, res) => {
     res.render('pages/usersnew')
   } else if (userId >= "0" && userId <= "2" ) {
     res.render('pages/singleuser', {
-    userIdSingle: userIdSingle
+      userId: userId,
+      userIdSingle: userIdSingle
   })
-  } else (res.render('pages/error'))
+  } 
+  else (res.render('pages/error'))
 })
 
-// projB step 3 single uses/schedules route
+// projB step 3 single users/schedules route
 app.get('/users/:singleUser/schedules', (req, res) => {
   
   const userId = req.params.singleUser
@@ -65,6 +67,7 @@ app.get('/users/:singleUser/schedules', (req, res) => {
   }
   console.log(scheduleId)
   res.render('pages/singleschedule', {
+    userId: userId,
     scheduleId: scheduleId
   })
 })
